@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>안녕하세요</title>
+  <style>
+    #text-container {
+      font-size: 24px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="text-container">
+    <!-- JavaScript로 동적으로 텍스트가 삽입됩니다 -->
+  </div>
+
+  <script>
+    // 텍스트 배열 선언
+    const texts = [
+	'다락아~ ',
+	'정신차려봐~ ',
+	'얼른!',
+	'해독하고 ',
+	'출근 ',
+	'해야지~!! ',
+	'다락아~ ',
+	'정신차려봐~ ',
+	'얼른!',
+	'해독하고 ',
+	'출근 ',
+	'해야지~!! '];
+
+    // 텍스트를 동적으로 생성하고 삽입
+    texts.forEach((text, index) => {
+      const spanElement = document.createElement('span');
+      spanElement.id = `text${index + 1}`;
+      spanElement.className = 'hidden';
+      spanElement.textContent = text;
+      
+      document.getElementById('text-container').appendChild(spanElement);
+    });
+
+    // 각 텍스트를 순차적으로 나타나게 함
+    texts.forEach((_, index) => {
+      setTimeout(() => {
+        document.getElementById(`text${index + 1}`).classList.remove('hidden');
+      }, (index + 1) * 2000);
+    });
+  </script>
+
+</body>
+</html>
